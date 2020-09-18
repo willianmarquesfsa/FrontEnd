@@ -1,20 +1,15 @@
 import React from 'react';
 import {useState, useEffect } from 'react'
 import {Link, useHistory} from 'react-router-dom';
-
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import './styles.css';
-
 import api from '..//services/api'
 
 
 export default function Profile() {
-
-    
-
+  
     const { StringDecoder } = require('string_decoder');
     const decoder = new StringDecoder('utf8');
-
     const history = useHistory();
     const ongId = localStorage.getItem('ongId');
     const ongName = localStorage.getItem('ongName');
@@ -30,14 +25,14 @@ export default function Profile() {
 
     },[ongId]);
 
-    async function handleDeleteIncident(id) {
+    async function handleDeleteIncident(id)   {
         try{
          await api.delete( `incidents/${id}`,{
              headers: {
                  Authorization: ongId,
              }
          });
-setIncidents(incidents.filter(incident => incident.id !== id));
+          setIncidents(incidents.filter(incident => incident.id !== id));
 
         }catch (err){
             alert('Erro ao deletar caso, tente novamente')
@@ -45,7 +40,6 @@ setIncidents(incidents.filter(incident => incident.id !== id));
     }
 
     function handleLogout(){
-
     localStorage.clear();
     history.push('/');
 
@@ -65,7 +59,6 @@ setIncidents(incidents.filter(incident => incident.id !== id));
                 return (<p>{decoded}</p>)
     }
 
-
     function reDestaque() {
         var reco = incidents.map(incident => (incident.destaque));
         var tex
@@ -76,7 +69,6 @@ setIncidents(incidents.filter(incident => incident.id !== id));
         //console.log(reco)
         return (<p>{tex}</p>)
     }
-
 
     function reDes() {
         var reco = incidents.map(incident => (incident.ongId));
@@ -90,8 +82,7 @@ setIncidents(incidents.filter(incident => incident.id !== id));
         return <Link style={{ pointerEvents: 'none' }} className="button">+ Posts</Link>
         }
     }
-      
-
+    
     return (
         <div className="profile-conteiner">
             <header>
@@ -107,9 +98,6 @@ setIncidents(incidents.filter(incident => incident.id !== id));
 
             <ul>
                 {incidents.map(incident => (
-
-                   
-                    //console.log(incident.description.toString()),
                     
                     <li key={incident.id}>
                     <strong>CASO</strong>
@@ -120,7 +108,6 @@ setIncidents(incidents.filter(incident => incident.id !== id));
                     <strong>Destacado na pagina principal.</strong>
                      <p>{reDestaque()}</p>
                     
-
                     <strong>Url do Instagram</strong>
                     <text>{incident.value}</text>
 

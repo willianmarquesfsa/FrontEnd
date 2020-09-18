@@ -1,27 +1,15 @@
 import React, { useState } from "react";
 import { geolocated } from "react-geolocated";
 
-import NewIncident from './index';
-
-
-
-
 const kkkk = []
-
-
-
  
 class Demo extends React.Component {
-
-   
     
     render() {
 
         return !this.props.isGeolocationAvailable ? (
             <div>Seu navegador não tem suporte a localização</div>
-
-            
-
+    
         ) : !this.props.isGeolocationEnabled ? (
 
             <div>Ative a localização do navegador.</div>
@@ -52,9 +40,6 @@ class Demo extends React.Component {
     }
 
 }
-
-
-
 
 export {kkkk};
  

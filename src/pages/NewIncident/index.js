@@ -1,30 +1,17 @@
 import React, { useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import {FiArrowLeft} from 'react-icons/fi';
-
 import api from '../services/api';
-
 import './styles.css';
-
-
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-//import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
-
 import Demo, {kkkk} from './geolo'
 import { Button } from '@material-ui/core';
-
 import { geolocated } from "react-geolocated";
-
-
-//import appt from './outro';
-
-
 
 
 let space = 'og:image" content="';
@@ -81,10 +68,6 @@ const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-
-
-
-
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
@@ -92,8 +75,7 @@ const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-      
-      
+           
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -101,35 +83,20 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+  export default function NewIncident(){
   
-  
-
-
-export default function NewIncident(){
-  
-
   const [xxx, setxxx]=useState('');
   
-
 function jjj(){
   if(xxx=='2') {
-
+   
+     return (<Demo></Demo>)
     
-    
-  return (<Demo></Demo>)
-  
-  
-  
   }
   if(xxx=='1') {
-    return
+      return
   }
 }
-
-  
-
-  
-    
     
     const classes = useStyles();
 
@@ -141,10 +108,7 @@ function jjj(){
     const history = useHistory();
     const [instagram, setInstagram] = useState('');
     const [destaque, setDestaque] = useState('');
-    //const [google, setGoogle] = useState('')
-    
- 
-    
+       
 
     async  function handleNewIncident(e) {
 
