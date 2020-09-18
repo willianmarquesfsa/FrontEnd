@@ -10,8 +10,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputBase from '@material-ui/core/InputBase';
 import Demo, {kkkk} from './geolo'
-import { Button } from '@material-ui/core';
-import { geolocated } from "react-geolocated";
 
 
 let space = 'og:image" content="';
@@ -136,20 +134,13 @@ function jjj(){
                   data.instagram =  splitString(xhr.responseText, space, valim);
                   data.title =  splitString(xhr.responseText, space2, vatit);
                   data.description = splitString(xhr.responseText,space3, vades); 
-
                  
              }
          }
          catch(err) { // instead of onerror
           console.log('erro')
         }
-
-
-
-
-
-
-        
+       
 
         try {
           await api.post('incidents', data, {
@@ -168,26 +159,17 @@ function jjj(){
         <div className="new-incident-container">
             <div className="content">
             <section>
-            
-
             <h1>Cadastro:</h1>
             <p>Informe o Instagram e a localização de sua empresa.</p>
-            
             </section>
-
             <form onSubmit={handleNewIncident}> 
-            
-            
-
-          
+                
             <input 
                 placeholder="URL do Instagram"
                 value={value}
                 onChange={e => setValue(e.target.value)}>
                 </input>
-            
-
-               
+                       
 
                 <p><FormControl className={classes.formControl} >
         <InputLabel  id="demo-simple-select-label">Destacar na pagina principal?</InputLabel>
@@ -199,8 +181,7 @@ function jjj(){
         >
           <MenuItem value={'1'}>Não</MenuItem>
           <MenuItem value={'2'}>Sim</MenuItem>
-          
-         
+                
         </Select>
             
       </FormControl>
@@ -217,26 +198,20 @@ function jjj(){
         >
           <MenuItem value={'1'}>Não</MenuItem>
           <MenuItem value={'2'}>Sim</MenuItem>
-          
-         
+                   
         </Select>
-            
+           
       </FormControl>
 </p>
 <p/>
       <p>{jjj()}</p>
-
-
-
-            
-        
+       
             <button className="button" type="submit">Cadastrar</button>
             <Link className="back-link" to  = "/profile"><FiArrowLeft size={16} color="#E02041"/>Voltar para a home </Link> 
             </form>
             <h2><p></p></h2>
             </div>
-
-            
+          
         </div>
     )
 }

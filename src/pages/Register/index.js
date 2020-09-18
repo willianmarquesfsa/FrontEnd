@@ -2,15 +2,11 @@ import React, {useState} from 'react';
 import './styles.css';
 import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
-
 import api from '../services/api';
-
 import logoImg from '../../assets/logo2.png';
-
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-//import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -27,24 +23,17 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-//comentario
 
 export default function Register() {
 
     const classes = useStyles();
-    
-   
-
-
     const [name,setName]=useState('');
     const [email,setEmail]=useState('');
     const [whatsapp,setWhatsapp]=useState('');
     const [city,setCity]=useState('');
     const [uf,setUF]=useState('');
     const [grupo,setgrupo]=useState('');
-    
     const [centrolojistico,setcentrolojistico]=useState('');
-
     const history = useHistory();
 
     async function handleRegister(e) {
@@ -53,8 +42,7 @@ export default function Register() {
 
         try{
         const response =  await api.post('ongs', data);
-        
-
+       
         alert(`Seu ID de acesso foi enviado para ${response.data.resposta} `);
         history.push('/');
         }catch(err){
@@ -62,10 +50,6 @@ export default function Register() {
         }
 
     }
-
-
-    
-
     function lose(){
     
       if ( centrolojistico == 'Feiraguay'|| 
@@ -103,7 +87,7 @@ export default function Register() {
         <MenuItem value={'Nutrição e Estetica animal'}>Nutrição e Estetica animal</MenuItem>
         <MenuItem value={'Hospedagem'}>Hospedagem</MenuItem>
         <MenuItem value={'Veterinaria'}>Veterinaria</MenuItem>
-        
+     
        
       </Select>
     </FormControl>
@@ -217,9 +201,7 @@ export default function Register() {
             <MenuItem value={'Serviços Funerários'}>Serviços Funerários</MenuItem>
             <MenuItem value={'Viagens Turismo e Transporte'}>Viagens Turismo e Transporte</MenuItem>
             <MenuItem value={'Comunicação Visual e Fotografia'}>Comunicação Visual e Fotografia</MenuItem>
-            
-           
-            
+               
            
           </Select>
         </FormControl>
@@ -227,7 +209,6 @@ export default function Register() {
       }
       
     }
-
 
 
     return (
@@ -276,13 +257,11 @@ export default function Register() {
          
         </Select>
       </FormControl>
-            
-            
+                   
             </div>
 
              <div className="input-group">
-             
-             
+                
       <FormControl className={classes.formControl} >
        <InputLabel  id="demo-simple-select-label">Loja/Serviço</InputLabel>
         <Select style={{width:120 }}
@@ -311,14 +290,9 @@ export default function Register() {
         </Select>
       </FormControl>
      
-
       <p>{lose()}</p>
-             </div>
-
-            
-            
+            </div>
             <button className="button" type="submit">Cadastrar</button>
-
             </form>
             <Link className="back-link" to  = "/"><FiArrowLeft size={16} color="#E02041"/>Tenho cadastro </Link> 
             </div>

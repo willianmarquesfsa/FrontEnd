@@ -1,12 +1,8 @@
 import React,{ useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import {FiLogIn} from 'react-icons/fi';
-
 import api from '../services/api';
-
-
 import './styles.css'
-//import heroesImg from '../../assets/heroes.png'
 import logoImg from '../../assets/logo2.png'
 
 
@@ -44,8 +40,6 @@ export default function Logon(){
              </form>
          </section>
          
-         
-
      </dic>
  );
 }
