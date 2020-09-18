@@ -21,10 +21,29 @@ import { Button } from '@material-ui/core';
 
 import { geolocated } from "react-geolocated";
 
+
 //import appt from './outro';
 
 
- 
+
+
+let space = 'og:image" content="';
+let space2 = 'og:title" content="';
+let space3 = 'biography":"';
+
+let valim = '" />';
+let vatit = '(@';
+let vades = '","bloc';
+
+var splitString = function(stringToSplit, separator, vain) {
+    var arrayOfStrings = stringToSplit.split(separator);
+    var test = arrayOfStrings[1].split(vain)
+    if(test[0].length>500) { console.log('Muito Grande')}
+        else  
+        console.log(test[0])
+        return test[0]
+              
+     }
 
 
 const BootstrapInput = withStyles((theme) => ({
@@ -128,16 +147,45 @@ function jjj(){
     
 
     async  function handleNewIncident(e) {
-        e.preventDefault();
 
-        const data = {
-            title,
-            description,
-            value,
-            instagram,
-            destaque,
-            google: String(`https://maps.google.com/maps?q=${kkkk[0]}%2C${kkkk[1]}&z=17&hl=pt-BR`)
-        };
+      e.preventDefault();
+
+      const data = {
+          title,
+          description,
+          value,
+          instagram,
+          destaque,
+          google: String(`https://maps.google.com/maps?q=${kkkk[0]}%2C${kkkk[1]}&z=17&hl=pt-BR`)
+      };
+
+
+      let xhr = new XMLHttpRequest();
+
+      xhr.open('GET', String(data.value), false);   
+      try {
+          xhr.send();
+          if (xhr.status != 200) {
+            console.log(`Error ${xhr.status}: ${xhr.statusText}`);
+          } else {
+                  
+                  data.instagram =  splitString(xhr.responseText, space, valim);
+                  data.title =  splitString(xhr.responseText, space2, vatit);
+                  data.description = splitString(xhr.responseText,space3, vades); 
+
+                 
+             }
+         }
+         catch(err) { // instead of onerror
+          console.log('erro')
+        }
+
+
+
+
+
+
+        
 
         try {
           await api.post('incidents', data, {
